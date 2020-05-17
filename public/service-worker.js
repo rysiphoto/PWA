@@ -2,10 +2,9 @@ const FILES_TO_CACHE = [
   "/",
   "/index.html",
   "/models/transaction.js",
-  "/public/icons/icon-192x192.png",
-  "/public/icons/icon-512x512.png",
-  "/assets/css/style.css",
-  "/dist/app.bundle.js",
+  "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png",
+  "/css/style.css",
 ];
 
 
