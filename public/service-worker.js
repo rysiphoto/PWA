@@ -4,8 +4,8 @@ const FILES_TO_CACHE = [
   "./icons/icon-192x192.png",
   "./icons/icon-512x512.png",
   "./css/styles.css",
-  // "/index.html",
-  // "./models/transaction.js"
+  "./indexedDb.js",
+  "./index.html"
 ];
 
 const CACHE_NAME = "static-cache-v2";

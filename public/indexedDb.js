@@ -18,6 +18,13 @@ export function useIndexedDb(databaseName, storeName, method, object) {
       db.createObjectStore(storeName, { keyPath: "_id" });
     };
 
+    request.onsuccess = ({ target }) => {
+      db = target.result;
+      if (navigator.onLine) {
+        checkDatabase();
+      }
+    };
+
     request.onerror = function (e) {
       console.log("There was an error");
     };
@@ -46,3 +53,13 @@ export function useIndexedDb(databaseName, storeName, method, object) {
     };
   });
 }
+
+function saveRecord(record) {
+  const transaction = db.transaction(["pending"], "readwrite");
+  const store = transaction.objectStore("pending");
+
+  store.add(record);
+}
+
+
+window.addEventListener("online", checkDatabase);
