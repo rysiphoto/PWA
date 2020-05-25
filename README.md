@@ -10,7 +10,7 @@
 # **Personal Off/Online Finances**
 
 ### **Project Description:**
-##### This program allows you enter in transactions while you are on and offline. If you are offline, it uses an indexedDb to cache the transactions until you are online. It then pushes the cached trasactions up to the online DB.
+##### This program allows you enter in transactions while you are on and offline. If you are offline, it uses an indexedDb to cache the transactions until you are online. It then pushes the cached transactions up to the online DB.
 ---
 ### **GitHub Address:**
 [Personal Off/Online Finances](https://github.com/rysiphoto/PWA)
