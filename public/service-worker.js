@@ -1,11 +1,11 @@
-const CACHE_NAME = "static-cache-v2";
+var CACHE_NAME = "my-site-cache-v1";
 const DATA_CACHE_NAME = "data-cache-v1";
 
 
 
 const filesToCache = [
   "/",
-  "./manifest.webmanifest",
+  "./manifest.json",
   "./icons/icon-192x192.png",
   "./icons/icon-512x512.png",
   "./css/styles.css",
@@ -13,10 +13,7 @@ const filesToCache = [
   "./index.html"
 ];
 
-
-// install
 self.addEventListener("install", function (event) {
-  // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       console.log("Opened cache");
@@ -27,14 +24,11 @@ self.addEventListener("install", function (event) {
 
 // fetch
 self.addEventListener("fetch", function (evt) {
-  // cache successful requests to the API
   if (evt.request.url.includes("/api/")) {
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
         return fetch(evt.request)
           .then(response => {
-            console.log("test!");
-            // If the response was good, clone it and store it in the cache.
             if (response.status === 200) {
               cache.put(evt.request.url, response.clone());
             }
@@ -45,8 +39,7 @@ self.addEventListener("fetch", function (evt) {
             // Network request failed, try to get it from the cache.
             return cache.match(evt.request);
           });
-      }).catch(err => console.log(err))
-    );
+      }).catch(err => console.log(err)));
 
     return;
   }
